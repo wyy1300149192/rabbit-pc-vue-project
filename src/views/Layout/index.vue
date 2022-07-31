@@ -1,11 +1,17 @@
 <template>
   <div>
+    <div>头</div>
     <router-view></router-view>
+    <div>页脚</div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+
+}
 </script>
 
-<style lang="less" scoped></style>
+<style>
+
+</style>
