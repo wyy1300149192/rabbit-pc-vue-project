@@ -2,6 +2,8 @@ import { createStore } from 'vuex'
 import user from './modules/user'
 import cart from './modules/cart'
 import createPersistedstate from 'vuex-persistedstate'
+import category from './modules/category '
+
 // 创建vuex仓库并导出
 export default createStore({
   state: {
@@ -15,7 +17,7 @@ export default createStore({
   },
   modules: {
     // 分模块
-    user, cart
+    user, cart, category
   },
   getters: {
     // vuex的计算属性
