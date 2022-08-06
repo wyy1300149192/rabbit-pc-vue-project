@@ -14,8 +14,32 @@ const routes = [
       {
         path: '/Cart',
         component: Cart
+      },
+      {
+        path: '/category/:id',
+        component: () => import('@/views/Category')
+      },
+      {
+        path: '/category/sub/:id',
+        component: () => import('@/views/Category/Sub')
+      },
+      {
+        path: '/goods/:id',
+        component: () => import('@/views/Goods')
       }
     ]
+  },
+  {
+    path: '/playground',
+    component: () => import('@/views/Playground')
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/Login')
+  },
+  {
+    path: '/login/callback',
+    component: () => import('@/views/Login/callback')
   }
 ]
 // 创建路由实例

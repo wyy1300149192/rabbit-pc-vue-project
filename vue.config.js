@@ -13,5 +13,15 @@ module.exports = {
         path.join(__dirname, './src/styles/variables.less')
       ]
     }
+  },
+  devServer: {
+    historyApiFallback: true,
+    allowedHosts: 'all'
+  },
+  configureWebpack: {
+    externals: {
+      // 用来去除打包时候的常用不变模块
+      qc: 'QC'
+    }
   }
 }

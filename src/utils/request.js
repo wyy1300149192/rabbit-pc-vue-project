@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 import router from '@/router'
+import { message } from '@/components/Message'
 
 // baseURL设置/超时时间设置
 const instance = axios.create({
@@ -31,6 +32,7 @@ instance.interceptors.response.use(function (response) {
     const redirectUrl = encodeURIComponent(router.currentRoute.value.fullPath)
     router.push('/login?redirectUrl=' + redirectUrl)
   }
+  message({ type: 'error', text: error.response.data.message })
   return Promise.reject(error)
 })
 

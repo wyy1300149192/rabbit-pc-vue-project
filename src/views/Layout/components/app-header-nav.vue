@@ -2,8 +2,22 @@
   <ul class="app-header-nav">
     <li class="home"><RouterLink to="/">首页</RouterLink></li>
     <!-- 渲染 -->
-    <li v-for="item in list" :key="item.id"> <a href="#" >{{item.name}}</a></li>
 
+    <template v-if="list.length > 0">
+      <li v-for="item in list" :key="item.id">
+        <RouterLink :to="'/category/' + item.id">{{ item.name }}</RouterLink>
+      </li>
+    </template>
+    <template v-else>
+      <li v-for="i in 9" :key="i">
+        <XtxSkeleton
+          :width="60"
+          :height="32"
+          style="margin-right: 5px"
+          bg="rgba(0,0,0,0.5)"
+        />
+      </li>
+    </template>
   </ul>
 </template>
 
@@ -11,7 +25,7 @@
 // 引入接口
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-export default ({
+export default {
   setup () {
     const store = useStore()
     // 动态获取导航栏数据
@@ -22,7 +36,7 @@ export default ({
       list
     }
   }
-})
+}
 </script>
 
 <style scoped lang="less">

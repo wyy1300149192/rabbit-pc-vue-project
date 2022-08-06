@@ -1,5 +1,5 @@
 <template>
-  <div class="app-header-sticky" :class="{show : isShow}">
+  <div class="app-header-sticky" :class="{show : y > 78}">
     <div class="container">
       <RouterLink class="logo" to="/" />
       <AppHeaderNav />
@@ -13,22 +13,15 @@
 
 <script>
 import AppHeaderNav from './app-header-nav'
-import { ref } from 'vue'
+import { useWindowScroll } from '@vueuse/core'
 export default {
   name: 'AppHeaderSticky',
   components: { AppHeaderNav },
   setup (props) {
-    // 吸顶是否展示
-    const isShow = ref(false)
-    // 监听页面滚动
-    document.addEventListener('scroll', () => {
-      // 获取页面滚动距离
-      const scrollTop = document.documentElement.scrollTop
-      // 判断
-      isShow.value = scrollTop >= 78
-    })
+    // 获得距离顶部的滚动距离
+    const { y } = useWindowScroll()
     return {
-      isShow
+      y
     }
   }
 }
